@@ -1,4 +1,5 @@
-﻿HEADERnamespace a;
+﻿
+namespace Bookify.Domain.Bookings;
 
 public record DateRange
 {

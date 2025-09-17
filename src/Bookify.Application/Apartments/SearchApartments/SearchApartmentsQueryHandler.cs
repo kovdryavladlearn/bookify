@@ -60,6 +60,7 @@ public class SearchApartmentsQueryHandler : IQueryHandler<SearchApartmentsQuery,
                 (apartment, address) =>
                 {
                     apartment.Address = address;
+                    return apartment;
                 },
                 new
                 {
@@ -68,5 +69,7 @@ public class SearchApartmentsQueryHandler : IQueryHandler<SearchApartmentsQuery,
                     ActiveBookingStatuses
                 },
                 splitOn: "Country");
+
+        return apartments.AsList().AsReadOnly();
     }
 }
