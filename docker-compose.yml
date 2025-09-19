@@ -16,6 +16,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./.containers/database:/var/lib/postgresql/data
+      - bookify_pgdata:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5411:5432
+        
+volumes:
+  bookify_pgdata:

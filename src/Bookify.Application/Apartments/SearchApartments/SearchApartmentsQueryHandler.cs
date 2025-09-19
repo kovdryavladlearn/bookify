@@ -34,12 +34,14 @@ public class SearchApartmentsQueryHandler : IQueryHandler<SearchApartmentsQuery,
         const string sql = """
            SELECT
                a.id AS Id,
-               a.name AS Name, a description AS Description,
+               a.name AS Name, 
+               a.description AS Description,
                a.price_amount AS Price,
                a.price_currency AS Currency,
                a.address_country AS Country,
                a.address_state AS State,
-               a.address_zip_code AS ZipCode, a.address_city AS City,
+               a.address_zip_code AS ZipCode, 
+               a.address_city AS City,
                a.address_street AS Street
            FROM apartments AS a
            WHERE NOT EXISTS
@@ -47,9 +49,9 @@ public class SearchApartmentsQueryHandler : IQueryHandler<SearchApartmentsQuery,
                SELECT 1
                FROM bookings AS b
                WHERE
-               b. apartment_id = a. id AND
-               b. duration_start <= @EndDate AND
-               b. duration_end >= @StartDate AND
+               b.apartment_id = a.id AND
+               b.duration_start <= @EndDate AND
+               b.duration_end >= @StartDate AND
                b.status = ANY(@ActiveBookingStatuses)
             )
            """;
